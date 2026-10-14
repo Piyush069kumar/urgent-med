@@ -1,6 +1,5 @@
 import { pool } from "../../common/services/sql.service";
 import { IHospitalRegisterDTO, ICredential, IHospital, ILoginDTO , ICredentialWithHospital} from "./user.dto";
-import { type RowDataPacket, type ResultSetHeader } from "mysql2";
 import { hash, compare } from "bcrypt";
 
 export const getActiveUserByEmail = async (
