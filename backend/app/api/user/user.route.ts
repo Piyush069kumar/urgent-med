@@ -35,11 +35,11 @@ router.get("/me", roleAuth(), userController.getProfile);
 // ─── 3. Admin Routes (Restricted to platform superadmins) ─────────────────────
 
 // Verify/Approve a pending hospital
-router.patch(
-  "/hospitals/:id/verify",
-  roleAuth(),
-  requireRole(["admin"]),
-  userController.verifyHospital
-);
+// router.patch(
+//   "/hospitals/:id/verify",
+//   roleAuth(),
+//   requireRole(["admin"]),
+//   userController.verifyHospital
+// );
 
 export default router;

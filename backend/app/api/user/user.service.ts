@@ -122,13 +122,13 @@ export const createHospitalUser = async (data: IHospitalRegisterDTO) => {
   }
 };
 
-export const verifyHospital = async (hospitalId: string) => {
-  const query = `
-    UPDATE hospital
-    SET status = TRUE, updated_at = CURRENT_TIMESTAMP
-    WHERE id = $1
-    RETURNING id, hospital_name, status, updated_at;
-  `;
-  const { rows } = await pool.query(query, [hospitalId]);
-  return rows.length > 0 ? rows[0] : null;
-};
+// export const verifyHospital = async (hospitalId: string) => {
+//   const query = `
+//     UPDATE hospital
+//     SET status = TRUE, updated_at = CURRENT_TIMESTAMP
+//     WHERE id = $1
+//     RETURNING id, hospital_name, status, updated_at;
+//   `;
+//   const { rows } = await pool.query(query, [hospitalId]);
+//   return rows.length > 0 ? rows[0] : null;
+// };

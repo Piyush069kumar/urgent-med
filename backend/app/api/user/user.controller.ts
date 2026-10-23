@@ -69,18 +69,18 @@ export const getProfile = asyncHandler(async (req: Request, res: Response) => {
  * 4. Admin verifies/approves a pending hospital
  * Admin-only endpoint: PATCH /api/users/hospitals/:id/verify
  */
-export const verifyHospital = asyncHandler(async (req: Request, res: Response) => {
-  const { id } = req.params;
-  if (!id) {
-    throw createError(400, "Hospital ID is required");
-  }
+// export const verifyHospital = asyncHandler(async (req: Request, res: Response) => {
+//   const { id } = req.params;
+//   if (!id) {
+//     throw createError(400, "Hospital ID is required");
+//   }
 
-  const updatedHospital = await userService.verifyHospital(id);
-  if (!updatedHospital) {
-    throw createError(404, "Hospital not found");
-  }
+//   const updatedHospital = await userService.verifyHospital(id);
+//   if (!updatedHospital) {
+//     throw createError(404, "Hospital not found");
+//   }
 
-  res.status(200).send(
-    createResponse(updatedHospital, "Hospital approved successfully")
-  );
-});
+//   res.status(200).send(
+//     createResponse(updatedHospital, "Hospital approved successfully")
+//   );
+// });
