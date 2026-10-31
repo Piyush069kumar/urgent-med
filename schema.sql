@@ -109,8 +109,9 @@ CREATE TABLE hospital_resource (
     hospital_id UUID NOT NULL,
     resource_id INT NOT NULL,
 
-    is_available BOOLEAN DEFAULT TRUE,
-    quantity INT DEFAULT 0,
+    total INT NOT NULL DEFAULT 0,        -- total capacity the hospital owns
+    available INT NOT NULL DEFAULT 0,    -- currently free / in-stock
+    occupied INT NOT NULL DEFAULT 0,     -- currently in use
 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -126,5 +127,9 @@ CREATE TABLE hospital_resource (
         ON DELETE CASCADE,
 
     CONSTRAINT unique_hospital_resource
-        UNIQUE (hospital_id, resource_id)
+        UNIQUE (hospital_id, resource_id),
+
+    -- Guard: available + occupied must never exceed total
+    CONSTRAINT chk_capacity
+        CHECK (available >= 0 AND occupied >= 0 AND total >= 0 AND available + occupied <= total)
 );
